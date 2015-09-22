@@ -14,6 +14,7 @@ class HorarioController extends Controller
     {
         $this->horarioRepo = $horarioRepo;
     }
+
     public function index()
     {
         $data = $this->horarioRepo->ciclo();
@@ -30,5 +31,20 @@ class HorarioController extends Controller
     {
         $data = $this->horarioRepo->grupo($id);
         return view('horario.grupos', compact('data'));
+    }
+
+    public function create($id)
+    {
+        $dias       = $this->horarioRepo->dias();
+        $horas      = $this->horarioRepo->horas($id);
+        $aulas      = $this->horarioRepo->aulas();
+        $materias   = $this->horarioRepo->materias($id);
+        $horario    = $this->horarioRepo->horario($id);
+        return view('horario.create', compact('dias', 'horas', 'aulas', 'materias', 'horario', 'id'));
+    }
+
+    public function store()
+    {
+
     }
 }

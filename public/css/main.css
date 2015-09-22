@@ -1,0 +1,10 @@
+.table-li{
+    list-style:none;
+    display:inline-block;
+}.table-li > div{
+     border:1px solid #000;
+     padding:.2em 1em;
+     margin-left:-4px;
+     display: inline;
+
+ }

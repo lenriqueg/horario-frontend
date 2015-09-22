@@ -1,0 +1,124 @@
+{% extends "layouts.base" %}
+
+{% block content %}
+<div class="row">
+    <form action="{{ route('horario.store', id) }}" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="col s4">
+            <div class="input-field col s12">
+                <select name="dia_id">
+                    {% for d in dias %}
+                    <option value="{{ d.id }}">{{ d.dia }}</option>
+                    {% endfor %}
+                </select>
+                <label for="">Dias disponibles</label>
+            </div>
+            <div class="input-field col s12">
+                <select name="dia_id">
+                    {% for d in horas %}
+                        <option value="{{ d.id }}">{{ d.hora }}</option>
+                    {% endfor %}
+                </select>
+                <label for="">Horas disponibles</label>
+            </div>
+            <div class="input-field col s12">
+                <select name="dia_id">
+                    {% for d in aulas %}
+                        <option value="{{ d.id }}">{{ d.aula }}</option>
+                    {% endfor %}
+                </select>
+                <label for="">Aulas disponibles</label>
+            </div>
+            <div class="input-field col s12">
+                <select name="dia_id">
+                    {% for d in materias %}
+                        <option value="{{ d.id }}">{{ d.materia }}</option>
+                    {% endfor %}
+                </select>
+                <label for="">Materias disponibles</label>
+            </div>
+            <div class="input-field col s12 center-align">
+                <button class="waves-effect waves-light btn white-text">Crear
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="col s8">
+        <article class="table-li">
+            <div>Hora</div>
+            {% for d in horas %}
+                <div>{{ d.hora }}</div>
+            {% endfor %}
+        </article>
+        <article class="table-li">
+            <div>Lunes</div>
+            {% for d in horario %}
+            {% if d.dia == 'Lunes' %}
+                {% if d.materia == null %}
+                    <div>null</div>
+                {% else %}
+                    <div>{{ d.materia }}</div>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        </article>
+        <article class="table-li">
+            <div>Martes</div>
+            {% for d in horario %}
+                {% if d.dia == 'Martes' %}
+                    {% if d.materia == null %}
+                        <div>null</div>
+                    {% else %}
+                        <div>{{ d.materia }}</div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </article>
+        <article class="table-li">
+            <div>Miercoles</div>
+            {% for d in horario %}
+                {% if d.dia == 'Miercoles' %}
+                    {% if d.materia == null %}
+                        <div>null</div>
+                    {% else %}
+                        <div>{{ d.materia }}</div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </article>
+        <article class="table-li">
+            <div>JUeves</div>
+            {% for d in horario %}
+                {% if d.dia == 'Jueves' %}
+                    {% if d.materia == null %}
+                        <div>null</div>
+                    {% else %}
+                        <div>{{ d.materia }}</div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </article>
+        <article class="table-li">
+            <div>Viernes</div>
+            {% for d in horario %}
+                {% if d.dia == 'Viernes' %}
+                    {% if d.materia == null %}
+                        <div>null</div>
+                    {% else %}
+                        <div>{{ d.materia }}</div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </article>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+{% endblock %}

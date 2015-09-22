@@ -8,6 +8,12 @@
     <div class="col s4">
         {!! Form::open(['route' => ['horario.store', $id], 'method' => 'POST']) !!}
         <div class="input-field col s12">
+            <select name="ciclo_id">
+                <option value="{{ $ciclo->id }}">{{ $ciclo->ciclo }}</option>
+            </select>
+            <label for="hora_id">Horas disponibles</label>
+        </div>
+        <div class="input-field col s12">
             <select name="hora_id">
                 <option value="" disabled selected>...</option>
                 @foreach($horas as $h)
@@ -53,17 +59,26 @@
     {{-- Tabla de horarios --}}
     <div class="col s8">
         <article class="table-li">
-            <div>Hora</div>
-            @foreach($dias as $d)
-                <div>{{$d->dia}}</div>
+            <div data-col="inline">Hora</div>
+            @foreach($horas as $d)
+                <div data-col="inline">{{$d->hora}}</div>
             @endforeach
         </article>
+        @foreach($dias as $dia)
         <article class="table-li">
-            <div>Lunes</div>
+            <div data-col="inline">{{ $dia->dia }}</div>
             @foreach($horario as $d)
-                <div>{{ $d->materia }}</div>
+                @if($d->dia == $dia->dia)
+                    @if($d->materia == null)
+                        <div data-col="inline">null</div>
+                    @else
+                        <div data-col="inline">{{ $d->materia }}</div>
+                    @endif
+                @endif
             @endforeach
         </article>
+        @endforeach
+        @include('partials.errors')
     </div>
 </div>
 @endsection

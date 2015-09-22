@@ -1,3 +1,3 @@
 @foreach($errors->all() as $error)
-{{ $error }}
+    <p>{{ $error }}</p>
 @endforeach

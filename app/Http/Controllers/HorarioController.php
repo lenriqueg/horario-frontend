@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Requests\StoreHorarioRequest;
 use App\Core\Repositories\HorarioRepo;
+use App\Core\Repositories\MateriaRepo;
 
 class HorarioController extends Controller
 {
     protected $horarioRepo;
+    protected $materiaRepo;
 
-    public function __construct(HorarioRepo $horarioRepo)
+    public function __construct(HorarioRepo $horarioRepo, MateriaRepo $materiaRepo)
     {
         $this->horarioRepo = $horarioRepo;
+        $this->materiaRepo = $materiaRepo;
     }
 
     public function index()
@@ -33,6 +36,7 @@ class HorarioController extends Controller
         return view('horario.grupos', compact('data'));
     }
 
+
     public function create($id)
     {
         $dias       = $this->horarioRepo->dias();
@@ -46,6 +50,6 @@ class HorarioController extends Controller
 
     public function store(StoreHorarioRequest $request)
     {
-        return redirect()->back()->withErrors(['errors' => 'Guardado']);
+        return $this->horarioRepo->store();
     }
 }

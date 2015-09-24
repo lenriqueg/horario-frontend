@@ -24,10 +24,11 @@ class StoreHorarioRequest extends Request
     public function rules()
     {
         return [
-            'dia_id'        => 'required',
-            'aula_id'       => 'required',
+            'dia_id'        => 'required | unique_with:horarios,grupo_id,hora_id,ciclo_id',
+            'aula_id'       => 'required | unique_with:horarios,hora_id,dia_id',
             'hora_id'       => 'required',
             'materia_id'    => 'required',
+            'grupo_id'      => 'required',
             'ciclo_id'      => 'required'
         ];
     }

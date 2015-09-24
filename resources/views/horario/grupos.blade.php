@@ -19,7 +19,7 @@
                     <strong>{{ $d->semestre }}</strong>
                 </div>
                 <div class="card-action">
-                    <a class="waves-effect waves-light btn white-text" href="{{ route('horario.create', $d->id)}}">Grupos
+                    <a class="waves-effect waves-light btn white-text" href="{{ route('horario.create', $d->id)}}">Crear Horario
                         <i class="material-icons right">send</i>
                     </a>
                 </div>

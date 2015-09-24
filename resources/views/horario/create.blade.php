@@ -7,6 +7,7 @@
 <div class="row">
     <div class="col s4">
         {!! Form::open(['route' => ['horario.store', $id], 'method' => 'POST']) !!}
+        {!! Form::hidden('grupo_id', $id) !!}
         <div class="input-field col s12">
             <select name="ciclo_id">
                 <option value="{{ $ciclo->id }}">{{ $ciclo->ciclo }}</option>

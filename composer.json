@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*",
         "barryvdh/laravel-debugbar": "^2.0",
-        "rcrowe/twigbridge": "0.8.x"
+        "rcrowe/twigbridge": "0.8.x",
+        "felixkiss/uniquewith-validator": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

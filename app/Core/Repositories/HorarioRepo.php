@@ -7,10 +7,18 @@ use App\Core\Entities\Grupo;
 use App\Core\Entities\Dia;
 use App\Core\Entities\Hora;
 use App\Core\Entities\Aula;
+use App\Core\Entities\Horario;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class HorarioRepo
 {
+    protected $materiaRepo;
+
+    public function __construct(MateriaRepo $materiaRepo)
+    {
+        $this->materiaRepo = $materiaRepo;
+    }
     public function ciclo()
     {
         $data = Ciclo::where('status', 1)->first();
@@ -84,8 +92,75 @@ class HorarioRepo
         return $horario;
     }
 
-    public function create($value)
+    public function beforeStore()
     {
+        $maxHrs     = $this->materiaRepo->maxHrsMateria();
+        $enpalme    = $this->materiaRepo->materiaMaestroEnpalme();
 
+        $numRegistro = count(Horario::where('ciclo_id', Input::get('ciclo_id'))
+            ->where('grupo_id', Input::get('grupo_id'))
+            ->where('materia_id', Input::get('materia_id'))
+            ->get());
+        if($numRegistro < $maxHrs )
+        {
+            if($enpalme == null)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function createSkeleton()
+    {
+        $count = DB::table('clon_horarios')
+            ->where('grupo_id', '=', Input::get('grupo_id'))->count();
+        if ($count < 1) {
+            $g = Grupo::find(Input::get('grupo_id'));
+            $x = DB::select('SELECT * from horas where turno_id IN (?, 3)', [$g->turno_id]);
+            $dias = Dia::all();
+            foreach ($dias as $d) {
+                foreach($x as $y) {
+                    DB::table('clon_horarios')
+                        ->insert([
+                            'hora_id'		=> $y->id,
+                            'materia_id'	=> 0,
+                            'grupo_id'		=> Input::get('grupo_id'),
+                            'aula_id'		=> 0,
+                            'dia_id'		=> $d->id,
+                            'ciclo_id'		=> Input::get('ciclo_id')
+                        ]);
+                }
+            }
+        }
+        DB::update('UPDATE clon_horarios
+					SET materia_id = ?, aula_id = ?
+					where ciclo_id = ? and hora_id = ? and grupo_id = ? and dia_id = ?
+					limit 1',
+                    [
+                        Input::get('materia_id'),
+                        Input::get('aula_id'),
+                        Input::get('ciclo_id'),
+                        Input::get('hora_id'),
+                        Input::get('grupo_id'),
+                        Input::get('dia_id')
+                    ]);
+    }
+
+    public function store()
+    {
+        if($this->beforeStore())
+        {
+            $horario = Horario::create(Input::all());
+            $horario->save();
+            $this->createSkeleton();
+            return redirect()->back()->withErrors(['errors' => 'Guardado']);
+        }
+        return redirect()->back()->withInput()->withErrors(['errors' => 'Enpalme Guardar']);
     }
 }

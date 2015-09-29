@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="row">
+    @if(!$data)
+    <p>SIn info</p>
+    @else
     @foreach($data as $d)
         <div class="col s4">
             <div class="card medium">
@@ -26,5 +29,6 @@
             </div>
         </div>
     @endforeach
+    @endif
 </div>
 @endsection

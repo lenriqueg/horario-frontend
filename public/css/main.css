@@ -1,3 +1,6 @@
+.form-inline{
+    display: inline;
+}
 .table-li{
     list-style:none;
     display:inline-block;
@@ -6,3 +9,17 @@
      padding:.2em 1em;
      margin-left:-4px;
  }
+ button[data-button^="small"]{
+     background: none;
+     border: none;
+     margin: 0;
+     padding: 0;
+ }
+button[data-button^="small"]:focus{
+    outline: none;
+}
+button[data-button^="small"]>i{
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+}

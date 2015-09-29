@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Requests\StoreHorarioRequest;
 use App\Core\Repositories\HorarioRepo;
 use App\Core\Repositories\MateriaRepo;
+use Illuminate\Support\Facades\Input;
 
 class HorarioController extends Controller
 {
@@ -51,5 +52,11 @@ class HorarioController extends Controller
     public function store(StoreHorarioRequest $request)
     {
         return $this->horarioRepo->store();
+    }
+
+    public function destroy($id)
+    {
+        $this->horarioRepo->destroy($id);
+        return redirect()->back()->withErrors(['errors' => 'Eliminado']);
     }
 }

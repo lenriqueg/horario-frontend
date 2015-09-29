@@ -163,4 +163,32 @@ class HorarioRepo
         }
         return redirect()->back()->withInput()->withErrors(['errors' => 'Enpalme Guardar']);
     }
+
+    public function update($value)
+    {
+        DB::table('clon_horarios')
+            ->where('materia_id', Input::get('materia_id'))
+            ->where('hora_id', Input::get('hora_id'))
+            ->where('ciclo_id', Input::get('ciclo_id'))
+            ->where('dia_id', Input::get('dia_id'))
+            ->where('aula_id', Input::get('aula_id'))
+            ->where('grupo_id', $value)
+            ->update([
+                'materia_id'    => 0,
+                'aula_id'       => 0
+            ]);
+    }
+
+    public function destroy($value)
+    {
+        Horario::where('materia_id', Input::get('materia_id'))
+            ->where('hora_id', Input::get('hora_id'))
+            ->where('ciclo_id', Input::get('ciclo_id'))
+            ->where('dia_id', Input::get('dia_id'))
+            ->where('aula_id', Input::get('aula_id'))
+            ->where('grupo_id', $value)
+            ->delete();
+
+        $this->update($value);
+    }
 }

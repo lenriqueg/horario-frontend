@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "241ea216aeb7cd676d3f3029573bcf0c",
-    "content-hash": "fb6de2b228e0ca25d6a99f2d5b3eb80d",
+    "hash": "3f02bda18e41372bdf9e864cfc5d503b",
+    "content-hash": "46be1ab44f9d08142063939f798cd888",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -60,6 +60,54 @@
                 "webprofiler"
             ],
             "time": "2015-09-09 11:39:27"
+        },
+        {
+            "name": "barryvdh/laravel-dompdf",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-dompdf.git",
+                "reference": "6acded2b805cd1818dd31e47f971eedf51e15c30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-dompdf/zipball/6acded2b805cd1818dd31e47f971eedf51e15c30",
+                "reference": "6acded2b805cd1818dd31e47f971eedf51e15c30",
+                "shasum": ""
+            },
+            "require": {
+                "dompdf/dompdf": "0.6.*",
+                "illuminate/support": "5.0.x|5.1.x",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\DomPDF\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A DOMPDF Wrapper for Laravel",
+            "keywords": [
+                "dompdf",
+                "laravel",
+                "pdf"
+            ],
+            "time": "2015-06-11 12:54:07"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -2097,51 +2145,6 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
-        },
-        {
-            "name": "vsmoraes/laravel-pdf",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vsmoraes/pdf-laravel5.git",
-                "reference": "89fa632ee3b973870e92b8329615a806c15b942c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vsmoraes/pdf-laravel5/zipball/89fa632ee3b973870e92b8329615a806c15b942c",
-                "reference": "89fa632ee3b973870e92b8329615a806c15b942c",
-                "shasum": ""
-            },
-            "require": {
-                "dompdf/dompdf": "0.6.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Vsmoraes\\Pdf\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vinicius Moraes",
-                    "email": "vinicius@archlinux.com.br"
-                }
-            ],
-            "description": "DOMPDF module for Laravel 5",
-            "keywords": [
-                "dompdf",
-                "laravel",
-                "pdf"
-            ],
-            "time": "2015-03-20 13:30:34"
         }
     ],
     "packages-dev": [

@@ -10,7 +10,8 @@
         "laravelcollective/html": "5.1.*",
         "barryvdh/laravel-debugbar": "^2.0",
         "rcrowe/twigbridge": "0.8.x",
-        "felixkiss/uniquewith-validator": "2.*"
+        "felixkiss/uniquewith-validator": "2.*",
+        "vsmoraes/laravel-pdf": "1.0.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

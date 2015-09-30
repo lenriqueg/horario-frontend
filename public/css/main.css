@@ -23,3 +23,9 @@ button[data-button^="small"]>i{
     padding: 0;
     margin: 0;
 }
+table {
+    border-collapse: collapse;
+}
+table, th, td{
+    border: 1px solid black;
+}

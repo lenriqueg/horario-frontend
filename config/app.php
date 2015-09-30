@@ -149,6 +149,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         TwigBridge\ServiceProvider::class,
         Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -202,6 +203,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Debugbar'  => Barryvdh\Debugbar\Facade::class,
         'Twig'      => TwigBridge\Facade\Twig::class,
+        'PDF'       => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

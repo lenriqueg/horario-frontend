@@ -6,7 +6,6 @@ use App\Http\Requests;
 use App\Http\Requests\StoreHorarioRequest;
 use App\Core\Repositories\HorarioRepo;
 use App\Core\Repositories\MateriaRepo;
-use Illuminate\Support\Facades\Input;
 
 class HorarioController extends Controller
 {
@@ -52,6 +51,17 @@ class HorarioController extends Controller
     public function store(StoreHorarioRequest $request)
     {
         return $this->horarioRepo->store();
+    }
+
+    public function pdf($id)
+    {
+        $horas      = $this->horarioRepo->horas($id);
+        $dias       = $this->horarioRepo->dias();
+        $horario    = $this->horarioRepo->horario($id);
+        $view        = view('horario.pdf', compact('horas', 'dias', 'horario'));
+        $pdf        = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream();
     }
 
     public function destroy($id)

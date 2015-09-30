@@ -23,7 +23,7 @@
                     @if($d->materia == null)
                         <div data-col="inline">null</div>
                     @else
-                        <div data-col="inline">
+                        <div data-col="inline" class="color">
                             {{ $d->materia }}
                             {!! Form::open(['route' => ['horario.destroy', $id], 'class' => 'form-inline', 'method' => 'DELETE']) !!}
                             {!! Form::hidden('materia_id', $d->materia_id) !!}
@@ -50,9 +50,32 @@
 @endsection
 
 @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.4.0/randomColor.js"></script>
     <script>
         $(document).ready(function() {
             $('select').material_select();
+
+            var v = [];
+            colorMateria();
+            console.log(v);
+            function color(){
+                var back = randomColor({luminosity: 'light'});
+                return back;
+            }
+
+            function materia(color){
+                var materia = $('.color').html();
+                $('.color').css('background', color)
+                v.push(materia)
+                return materia;
+            }
+
+            function colorMateria(){
+                materia(color())
+                for(var i = 0; i< v.length; i++){
+                    console.log('d');
+                }
+            }
         });
     </script>
 @endsection

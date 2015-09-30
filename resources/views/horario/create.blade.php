@@ -42,6 +42,9 @@
         </article>
         @endforeach
         @include('partials.errors')
+        <article>
+            <a class="waves-effect waves-light btn" href="{{ route('horario.pdf', $id) }}">Pdf</a>
+        </article>
     </div>
 </div>
 @endsection

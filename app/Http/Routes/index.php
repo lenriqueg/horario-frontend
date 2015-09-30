@@ -11,3 +11,5 @@ get('crear-horario-{id}', ['as' => 'horario.create', 'uses' => 'HorarioControlle
 post('crear-horario-{id}', ['as' => 'horario.store', 'uses' => 'HorarioController@store']);
 
 delete('elimiar-horario-{id}', ['as' => 'horario.destroy', 'uses' => 'HorarioController@destroy']);
+
+get('pdf-horario-{id}', ['as' => 'horario.pdf', 'uses' => 'HorarioController@pdf']);

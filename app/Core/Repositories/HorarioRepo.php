@@ -41,6 +41,15 @@ class HorarioRepo
         return $data;
     }
 
+    public function findGrupo($value)
+    {
+        return DB::table('grupos')
+            ->join('turnos', 'turnos.id', '=', 'grupos.turno_id')
+            ->join('semestres', 'semestres.id', '=', 'grupos.semestre_id')
+            ->where('grupos.id', $value)
+            ->get();
+    }
+
     public function dias()
     {
         $dias = Dia::all();

@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Requests\StoreHorarioRequest;
 use App\Core\Repositories\HorarioRepo;
 use App\Core\Repositories\MateriaRepo;
+use Illuminate\Support\Facades\DB;
 
 class HorarioController extends Controller
 {
@@ -36,7 +37,6 @@ class HorarioController extends Controller
         return view('horario.grupos', compact('data'));
     }
 
-
     public function create($id)
     {
         $dias       = $this->horarioRepo->dias();
@@ -58,7 +58,10 @@ class HorarioController extends Controller
         $horas      = $this->horarioRepo->horas($id);
         $dias       = $this->horarioRepo->dias();
         $horario    = $this->horarioRepo->horario($id);
-        $view        = view('horario.pdf', compact('horas', 'dias', 'horario'));
+        $ciclo      = $this->horarioRepo->ciclo();
+        $grupo      = $this->horarioRepo->findGrupo($id);
+        $materias   = $this->materiaRepo->materias($id);
+        $view       = view('horario.pdf', compact('horas', 'dias', 'horario', 'ciclo', 'grupo', 'materias'));
         $pdf        = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setOrientation('landscape');
         return $pdf->stream();

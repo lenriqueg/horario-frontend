@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\Input;
 
 class MateriaRepo
 {
+    public function materias($value)
+    {
+        return DB::select('select nombres, materia, hora_id, dia_id from materias
+            join maestro_materia
+                on materias.id = maestro_materia.materia_id
+            join maestros
+                on maestros.id = maestro_materia.maestro_id
+            join horarios
+                on horarios.materia_id = materias.id
+            where grupo_id = ?
+            group by materia', [$value]);
+    }
+
     public function maxHrsMateria()
     {
         $data = Materia::findOrfail(Input::get('materia_id'));

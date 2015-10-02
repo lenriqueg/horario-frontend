@@ -50,7 +50,6 @@
 @endsection
 
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.4.0/randomColor.js"></script>
     <script>
         $(document).ready(function() {
             $('select').material_select();

@@ -2,14 +2,6 @@
 
 @section('style')
     {!! Html::style('css/main.css') !!}
-    <style>
-        body{
-            font-family: sans-serif;
-        }
-        table{
-            width: 100%;S
-        }
-    </style>
 @endsection
 
 @section('content')
@@ -29,7 +21,10 @@
             @foreach($horario as $ho)
                 @if($h->hora == $ho->hora)
                     @if($ho->materia)
-                        <td>{{ $ho->materia }} {{ $ho->aula }}</td>
+                        <td>
+                            <p>{{ substr($ho->materia, 0, 19) }}...</p>
+                            <p>{{ $ho->aula }}</p>
+                        </td>
                     @else
                         <td>null</td>
                     @endif
@@ -40,4 +35,9 @@
 
     </tbody>
 </table>
+@endsection
+
+@section('script')
+    <script>
+    </script>
 @endsection

@@ -60,7 +60,7 @@ class HorarioController extends Controller
         $horario    = $this->horarioRepo->horario($id);
         $view        = view('horario.pdf', compact('horas', 'dias', 'horario'));
         $pdf        = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
+        $pdf->loadHTML($view)->setOrientation('landscape');
         return $pdf->stream();
     }
 

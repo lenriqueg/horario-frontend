@@ -49,7 +49,7 @@ class HorarioRepo
 
     public function aulas()
     {
-        $aulas = Aula::all();
+        $aulas = Aula::where('status', 1)->get();
         return $aulas;
     }
 
@@ -66,13 +66,17 @@ class HorarioRepo
         $materias   = DB::select('select materia, grupo, materias.id as id from grupo_materia
           JOIN grupos on grupos.id = grupo_materia.grupo_id
           JOIN materias on materias.id = grupo_materia.materia_id
-          where grupo_id = ?', [$grupo->id]);
+          join maestro_materia on maestro_materia.materia_id = materias.id
+          join maestros on maestros.id = maestro_materia.maestro_id
+          where grupo_id = ?
+          AND materias.status <> 0
+          AND maestros.status <> 0', [$grupo->id]);
         return $materias;
     }
 
     public function horario($value)
     {
-        $horario = DB::select('SELECT hora, hora_id, materia, materia_id, grupo, grupo_id, aula, aula_id, dia, dia_id, ciclo from clon_horarios
+        $horario = DB::select('SELECT hora, hora_id, materia, color, materia_id, grupo, grupo_id, aula, aula_id, dia, dia_id, ciclo from clon_horarios
 			LEFT OUTER JOIN horas
 				on horas.id = clon_horarios.hora_id
 			LEFT OUTER JOIN materias
@@ -85,10 +89,10 @@ class HorarioRepo
 				on dias.id = clon_horarios.dia_id
 			LEFT OUTER JOIN ciclos
 				on ciclos.id = clon_horarios.ciclo_id
-			where ciclo_id = 2
+			where ciclo_id = ?
 			and grupo_id = ?
 			group By hora_id, dia_id',
-            [$value]);
+            [$this->ciclo()->id, $value]);
         return $horario;
     }
 

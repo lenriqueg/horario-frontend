@@ -10,7 +10,7 @@ class MateriaRepo
 {
     public function materias($value)
     {
-        return DB::select('select nombres, materia, hora_id, dia_id from materias
+        return DB::select('select nombres, materia, hora_id, dia_id, color from materias
             join maestro_materia
                 on materias.id = maestro_materia.materia_id
             join maestros

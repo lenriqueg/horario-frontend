@@ -62,7 +62,7 @@
     </tbody>
 </table>
 
-<table class="table-pdf"">
+<table class="table-pdf">
     <tr>
         <th>Maestro</th>
         <th>Materia</th>
@@ -70,7 +70,7 @@
     @foreach($materias as $d)
         <tr class="border">
             <td class="border">{{ $d->nombres }}</td>
-            <td class="border">{{ $d->materia }}</td>
+            <td class="border" style="background: {{ $d->color }}">{{ $d->materia }}</td>
         </tr>
     @endforeach
 </table>

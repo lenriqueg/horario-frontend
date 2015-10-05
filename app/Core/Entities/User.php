@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Core\Entities;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['nombre', 'email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.

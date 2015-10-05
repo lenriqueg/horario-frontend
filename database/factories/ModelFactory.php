@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\Entities\User;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -11,10 +12,10 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
     return [
-        'email'     => 'elektroacustica@gmail.com',
-        'password' => bcrypt('123'),
+        'usuario'     => 'administrador',
+        'password' => bcrypt('cbtis'),
         'remember_token' => str_random(10),
     ];
 });

@@ -3,13 +3,23 @@
 /*********************************************/
 CREATE TABLE users (
 	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-	`email` VARCHAR(255) NOT NULL,
+	`usuario` VARCHAR(255) NOT NULL,
 	`password` VARCHAR(60) NOT NULL,
 	`remember_token` VARCHAR(100) NULL,
 	`created_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
 	`updated_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
 	PRIMARY KEY (`id`)
 );
+INSERT INTO `users` (`id`, `usuario`, `password`, `remember_token`, `created_at`, `updated_at`)
+VALUES
+	(1,
+	 'administrador',
+	 '$2y$10$qxuI95/nwcEIiqTI13w5GOjMIzEemtLAFg5LgGO0fpkd3BBVREEG.',
+	 'K1yKwzIToK',
+	 '2015-10-05 21:13:47',
+	 '2015-10-05 21:13:47'
+	);
+
 /*********************************************/
 #tala de configuracion carreras
 /*********************************************/

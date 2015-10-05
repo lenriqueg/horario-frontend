@@ -1,4 +1,16 @@
 /*********************************************/
+#tala de configuracion users
+/*********************************************/
+CREATE TABLE users (
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(255) NOT NULL,
+	`password` VARCHAR(60) NOT NULL,
+	`remember_token` VARCHAR(100) NULL,
+	`created_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`updated_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	PRIMARY KEY (`id`)
+);
+/*********************************************/
 #tala de configuracion carreras
 /*********************************************/
 create table carreras(

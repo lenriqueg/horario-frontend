@@ -8,9 +8,9 @@
     @yield('style')
 </head>
 <body>
-<div class="container">
+<nav></nav>
+
 @yield('content')
-</div>
 
 {!! Html::script('js/jquery.min.js') !!}
 {!! Html::script('js/materialize.min.js') !!}

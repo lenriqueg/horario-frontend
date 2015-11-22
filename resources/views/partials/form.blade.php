@@ -1,4 +1,4 @@
-<div class="col s4">
+<div class="col s3">
     {!! Form::open(['route' => ['horario.store', $id], 'method' => 'POST']) !!}
     {!! Form::hidden('grupo_id', $id) !!}
     <div class="input-field col s12">

@@ -2,13 +2,18 @@
 
 @section('style')
     {!! Html::style('css/main.css') !!}
+    <style>
+        table{
+            width: 100%;
+        }
+    </style>
 @endsection
 @section('content')
 
 <div class="row">
     @include('partials.form')
     {{-- Tabla de horarios --}}
-    <div class="col s8">
+    <div class="col s9">
         <article class="table-li">
             <div data-col="inline">Hora</div>
             @foreach($horas as $d)

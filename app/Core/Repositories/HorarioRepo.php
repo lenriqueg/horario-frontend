@@ -172,7 +172,7 @@ class HorarioRepo
             $horario = Horario::create(Input::all());
             $horario->save();
             $this->createSkeleton();
-            return redirect()->back()->withErrors(['errors' => 'Guardado']);
+            return redirect()->back();
         }
         return redirect()->back()->withInput()->withErrors(['errors' => 'Enpalme Guardar']);
     }

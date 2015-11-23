@@ -14,7 +14,7 @@
 
 @section('content')
 <section>
-    <table>
+    <table style="margin-top: -10px;">
         <tr>
             <td width="200px">
                 <img src="{{ asset('img/logo.jpeg') }}" class="img-float">

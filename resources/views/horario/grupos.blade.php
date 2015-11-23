@@ -4,7 +4,7 @@
     .upper{
         text-transform: uppercase;
     }
-     .custom{
+    .custom{
         position: absolute;
         left: 80px;    
     }
